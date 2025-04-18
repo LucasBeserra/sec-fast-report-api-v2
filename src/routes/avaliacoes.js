@@ -3,13 +3,8 @@ const { body, validationResult } = require('express-validator');
 const router = express.Router();
 const avaliacaoController = require('../controllers/avaliacaoController');
 
-// Rota para obter uma avaliação por ID
 router.get('/:id', avaliacaoController.getAvaliacaoPorId);
-
-// Rota para obter todas as avaliacoes
 router.get('/', avaliacaoController.getAllAvaliacoes);
-
-// Rota para criar uma nova avaliação
 router.post(
     '/',
     [
@@ -29,7 +24,8 @@ router.post(
     },
     avaliacaoController.criarAvaliacao
 );
-
+router.put('/:id', avaliacaoController.updateAvaliacao);
+router.delete('/:id', avaliacaoController.deleteAvaliacao);
 
 
 module.exports = router;
