@@ -6,6 +6,6 @@ router.post('/criterios', criterioController.create);
 router.get('/criterios', criterioController.getAll);
 router.get('/criterios/:id', criterioController.getOne);
 router.put('/criterios/:id', criterioController.update);
-router.delete('/criterios/:id', criterioController.delete);
+router.delete('/criterios/:id', criterioController.deletar);
 
 module.exports = router;

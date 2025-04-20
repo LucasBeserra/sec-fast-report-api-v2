@@ -1,6 +1,5 @@
 const {Produto} = require('../models');
 
-
 async function create(req, res) {
     try {
       const produto = await Produto.create(req.body);
@@ -13,7 +12,9 @@ async function create(req, res) {
 
 async function getAll(req, res) {
     try {
-      const produtos = await Produto.findAll();
+      const produtos = await Produto.findAll( { order: [['createdAt', 'DESC']] } );
+      console.log(produtos);
+
       return res.status(200).json(produtos);
     } catch (error) {
       console.error(error);
@@ -47,7 +48,9 @@ async function update(req, res) {
       }
 
       await produto.update(req.body);
+
       return res.status(200).json(produto);
+
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Erro ao atualizar Produto' });
@@ -64,7 +67,7 @@ async function deletar(req, res) {
       }
 
       await produto.destroy();
-      return res.status(204).send(); // sucesso sem corpo
+      return res.status(204).send(); 
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Erro ao deletar Produto' });

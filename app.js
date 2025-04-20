@@ -1,18 +1,17 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
+const produtoRouter = require('./src/routes/produto');
+const clienteRouter = require('./src/routes/clientes');
+const criterioRouter = require('./src/routes/criterios');
 
-const avaliacaoRouter = require('./routes/avaliacoes');
-const produtoRouter = require('./routes/produto');
-const clienteRouter = require('./routes/clientes');
-const criterioRouter = require('./routes/criterios');
-const avaliacaoCriterioRouter = require('./routes/avalicaoCriterio');
+
+app.use(cors());//Para permitir requisicoes de outras origens
 
 app.use(express.json()); //Para ler json
 
-app.use('/api', avaliacaoRouter);
 app.use('/api', produtoRouter);
 app.use('/api', clienteRouter);
 app.use('/api', criterioRouter);
-app.use('/api', avaliacaoCriterioRouter);
 
 module.exports = app;

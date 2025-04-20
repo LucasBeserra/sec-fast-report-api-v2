@@ -5,6 +5,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
 
     const criterios = [
+      'Tomatecrum',
       'Rebarba(s)',
       'Canto(s) vivo',
       'Risco(s)',
@@ -34,7 +35,7 @@ module.exports = {
       'Corrente'
     ];
 
-    const data = criterios.map(criterio => {
+    const criteriosJson = criterios.map((criterio) => {
       return {
         nome: criterio,
         createdAt: new Date(),
@@ -42,12 +43,12 @@ module.exports = {
       }
     });
 
-    await queryInterface.bulkInsert('Criterios', data, {});
+    await queryInterface.bulkInsert('Criterios', criteriosJson, {});
 
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('criterios', null, {});
+    await queryInterface.bulkDelete('Criterios', null, {});
 
   }
 };

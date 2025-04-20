@@ -11,13 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Criterio.belongsToMany(models.Avaliacao, {
-        through: models.AvaliacaoCriterio,
-        foreignKey: 'id_criterio'
-      });
     }
   }
   Criterio.init({
+    id_criterio: DataTypes.INTEGER,
     nome: DataTypes.STRING
   }, {
     sequelize,
