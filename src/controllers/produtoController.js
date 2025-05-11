@@ -13,6 +13,7 @@ async function create(req, res) {
 async function getAll(req, res) {
     try {
       const produtos = await Produto.findAll( { order: [['createdAt', 'DESC']] } );
+      
       console.log(produtos);
 
       return res.status(200).json(produtos);

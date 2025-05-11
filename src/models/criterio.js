@@ -1,24 +1,36 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+
+const {Model} = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Criterio extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+
     static associate(models) {
-      // define association here
-    }
-  }
+      Criterio.belongsToMany(models.Valuation, {
+        through: models.ValuationJoinCriterio,
+        foreignKey: 'id_criterio',
+      });
+    };
+  };
+
   Criterio.init({
-    id_criterio: DataTypes.INTEGER,
-    nome: DataTypes.STRING
-  }, {
+    id_criterio: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    nome: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+    }
+  },
+  {
     sequelize,
     modelName: 'Criterio',
+    tableName: 'Criterios',
+    timestamps: true
   });
+
   return Criterio;
 };

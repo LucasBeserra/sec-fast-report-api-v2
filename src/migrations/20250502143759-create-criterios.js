@@ -1,13 +1,13 @@
 'use strict';
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Criterios', {
+  async up (queryInterface, Sequelize) {
+    queryInterface.createTable('Criterios', {
       id_criterio: {
-        allowNull: false,
-        autoIncrement: true,
+        type: Sequelize.INTEGER,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        autoIncrement: true
       },
       nome: {
         type: Sequelize.STRING,
@@ -21,10 +21,15 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      deletedAt: {
+        allowNull: true,
+        type: Sequelize.DATE
       }
     });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Criterios');
+
+  async down (queryInterface, Sequelize) {
+    queryInterface.dropTable('Criterios');
   }
 };

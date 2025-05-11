@@ -61,15 +61,17 @@ async function deletar(req, res) {
 
       if (!cliente) {
         return res.status(404).json({ error: 'Cliente não encontrado' });
+      } else {
+        await cliente.destroy();
+        return res.status(204).send();
       }
 
-      await cliente.destroy();
-      return res.status(204).send();
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Erro ao deletar Cliente' });
     }
  }
+ 
 
  module.exports = {
     create,

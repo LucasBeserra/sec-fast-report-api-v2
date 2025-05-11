@@ -5,6 +5,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
 
     const produtos = [
+      'Capo de Gol',
       'Placa Magnética',
       'Cagão Magnético',
       'Trembolinha',
