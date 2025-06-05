@@ -3,12 +3,13 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('Avaliacaos', {
-      id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+    await queryInterface.createTable('Valuations', {
+      valuation_id: {
+        type: Sequelize.UUIDV4,
+        defaultValue: Sequelize.UUIDV4,
         allowNull: false,
+        primaryKey: true,
+        unique: true
       },
       numero_serie: {
         type: Sequelize.STRING,
@@ -18,7 +19,7 @@ module.exports = {
         type: Sequelize.DATEONLY,
         allowNull: false,
       },
-      id_produto: {
+      product: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -58,6 +59,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.dropTable('Avaliacaos');
+    await queryInterface.dropTable('Valuations');
   }
 };
