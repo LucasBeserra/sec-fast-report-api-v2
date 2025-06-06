@@ -6,26 +6,27 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  User.init({
+  User.init(
+    {
       user_id: {
         type: DataTypes.UUIDV4,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true,
-        unique: true
+        unique: true,
       },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
     },
     {
@@ -34,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       tableName: "Users",
       timestamps: true,
       paranoid: true,
-      underscored: false
+      underscored: false,
     }
   );
   return User;

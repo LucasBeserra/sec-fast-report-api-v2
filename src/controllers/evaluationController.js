@@ -1,4 +1,4 @@
-const { Avaliacao } = require("../models");
+const { Evaluation } = require("../models");
 
 async function create(req, res) {
   try {
