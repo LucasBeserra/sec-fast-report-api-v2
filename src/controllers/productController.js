@@ -58,7 +58,7 @@ async function update(req, res) {
     }
 }
 
-async function deletar(req, res) {
+async function destroy(req, res) {
     try {
       const { id } = req.params;
       const produto = await Produto.findByPk(id);
@@ -80,5 +80,5 @@ module.exports = {
     getAll,
     getOne,
     update,
-    deletar,
+    destroy,
 }

@@ -4,41 +4,34 @@ const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class Evaluation extends Model {
-    static associate(models) {
-      Evaluation.belongsTo(models.Client, { foreignKey: "id_cliente" });
-      Evaluation.belongsTo(models.Product, { foreignKey: "id_produto" });
-      Evaluation.hasMany(models.EvalutionCriterion, {
-        foreignKey: "avaliacao_id",
-        as: "criterios",
-        onDelete: "CASCADE",
-      });
+    static associate() {
     }
   }
 
   Evaluation.init(
     {
-      id: { 
+      evalution_id: { 
         type: DataTypes.INTEGER, 
         primaryKey: true, 
         autoIncrement: true 
       },
-      numero_serie: { 
+      serial_number: { 
         type: DataTypes.STRING, 
         allowNull: false 
       },
-      data: { 
+      date: { 
         type: DataTypes.DATEONLY, 
         allowNull: false 
       },
-      id_produto: { 
+      product_id: { 
         type: DataTypes.INTEGER, 
         allowNull: false 
       },
-      id_cliente: { 
+      client_id: { 
         type: DataTypes.INTEGER, 
         allowNull: false 
       },
-      codigo_relatorio: { 
+      evaluation_code: { 
         type: DataTypes.STRING, 
         allowNull: false 
       },
