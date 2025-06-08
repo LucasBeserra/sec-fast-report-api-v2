@@ -1,9 +1,9 @@
-const {Produto} = require('../models');
+const productService = require('../services/productService');
 
-async function create(req, res) {
+function create(req, res) {
     try {
-      const produto = await Produto.create(req.body);
-      return res.status(201).json(produto);
+      const product = productService.create(req.body);
+      return res.status(201).json(product);
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Erro ao criar Produto' });
@@ -12,11 +12,11 @@ async function create(req, res) {
 
 async function getAll(req, res) {
     try {
-      const produtos = await Produto.findAll( { order: [['createdAt', 'DESC']] } );
+      const products = await productService.findAll( { order: [['createdAt', 'DESC']] } );
       
-      console.log(produtos);
+      console.log(products);
 
-      return res.status(200).json(produtos);
+      return res.status(200).json(products);
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Erro ao buscar Produtos' });

@@ -41,7 +41,7 @@ function findById(clientData) {
 }
 
 function findByName(clientData) {
-  //Verifica se o id do Cliente foi informado
+  //Verifica se o nome do Cliente foi informado
   if (!clientData.name || clientData.name.trim() === "") {
     throw new Error("O nome do Cliente precisa ser informado");
   }
