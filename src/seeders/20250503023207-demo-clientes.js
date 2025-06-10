@@ -4,37 +4,25 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
 
-    const clientes = [
-      {
-        razao_social: 'EnCheGuei Vara Ltda',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        razao_social: 'Trocação Sincera Sociedade Ilimitada',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        razao_social: 'Mandelão Ltda',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }
+    const clients = [
+      'EnCheGuei Vara Ltda',
+      'Trocação Sincera Sociedade Ilimitada',
+      'Mandelão Ltda'
     ];
 
-    const clientesJson = clientes.map((cliente) => {
+    const clientsJson = clients.map((client) => {
       return {
-        razao_social: cliente.razao_social,
+        razao_social: client,
         createdAt: new Date(),
         updatedAt: new Date()
       }
     });
 
-    await queryInterface.bulkInsert('Clientes', clientesJson, {});
+    await queryInterface.bulkInsert('Clients', clientsJson, {});
 
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Clientes', null, {});
+    await queryInterface.bulkDelete('Clients', null, {});
   }
 };

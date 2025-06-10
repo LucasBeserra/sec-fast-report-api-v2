@@ -4,7 +4,7 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
 
-    const produtos = [
+    const products = [
       'Capo de Gol',
       'Placa Magnética',
       'Cagão Magnético',
@@ -17,20 +17,20 @@ module.exports = {
       'Cosplay de Britadeira'
     ];
 
-    const produtosJson = produtos.map((produto) => {
+    const productsJson = products.map((product) => {
       return {
-        nome: produto,
+        name: product,
         createdAt: new Date(),
         updatedAt: new Date()
       }
     });
 
-    await queryInterface.bulkInsert('Produtos', produtosJson, {});
+    await queryInterface.bulkInsert('Products', productsJson, {});
 
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Produtos', null, {});
+    await queryInterface.bulkDelete('Products', null, {});
 
   }
 };
